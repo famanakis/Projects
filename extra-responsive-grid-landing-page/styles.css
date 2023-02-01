@@ -1,0 +1,495 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;}
+
+body {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1rem;
+    color: #404040;
+    line-height: 1.6;
+    letter-spacing: 0;
+} 
+
+img {
+    max-width: 100%;
+}
+
+/*==============
+   Typography
+===============*/
+
+h1, h2, strong {
+    font-weight: 700;
+}
+
+.yellow-accent {
+    color: #ffe600
+}
+
+.page-title,
+.subtitle {
+    grid-column: 2 / -2;
+    color: #000000;
+    text-align: center;
+}
+
+.page-title {
+    font-size: 3rem;
+    margin-bottom: 0.5em;
+    justify-self: center;
+}
+
+.page-title::after {
+    content: "";
+    display: block;
+    width: 100%;
+    height: 30px;
+    background: #ffe600;
+    margin-top: -40px;
+    margin-left: 15px;
+}
+
+
+.subtitle {
+    font-size: 1.125rem;
+    margin: .5em 0 1.5em;
+}
+
+.hero-title {
+    font-size: 24px;
+    font-weight: 700;
+    line-height: 1.4;
+    margin-bottom: 0;
+}
+
+.hero-about {
+    font-size: 18px;
+    margin: 18px 0;
+}
+
+.main-content {
+    line-height: 1.6;
+}
+
+.bold {
+    font-weight: 700;
+}
+
+.section-title {
+    color: #000000;
+    font-size: 1.125rem;
+    font-weight: 700;
+    margin-top: 1.5em;
+}
+
+.section-title:first-child {
+    margin-top: 0;
+}
+
+.gray-bold {
+    color: #404040;
+    font-weight: 700;
+}
+
+footer {
+    color: #000000;
+    text-align: left;
+    font-size: 16px;
+    line-height: 19px;
+}
+
+.footer-text {
+    font-family: sans-serif;
+    font-size: 16px;
+    line-height: 22px;
+    margin: 1em 0;
+}
+
+.footer-copyright {
+    font-size: .75rem;
+    margin-top: 4em;
+}
+
+/*Buttons*/
+
+.btn {
+    font-weight: 700;
+    line-height: 18px;
+    padding: .5em 1.75em;
+    margin-top: .5em;
+    cursor: pointer;
+}
+
+.btn-primary {
+    background-color: #ffe600;
+    color: #000000;
+    font-size: 14px;
+    justify-self: start; /*keeps button from stretching*/
+}
+
+.btn-primary:hover,
+.btn-primary:focus {
+    background: #ffc400;
+}
+
+.btn-form {
+    border: none;
+    margin-left: auto;
+}
+
+/*================
+   General layout
+==================*/
+.main-grid {
+    display: grid;
+    grid-template-columns: minmax(1em, 1fr) minmax(0px, 500px) minmax(1em, 1fr);
+    grid-column-gap: 2em;
+}
+
+@media (min-width: 600px) {
+    .main-grid {
+        grid-template-columns: minmax(1em, 1fr) repeat(3, minmax(150px, 320px)) minmax(1em, 1fr);
+    }
+}
+
+/*==============
+   Header Area
+===============*/
+
+.header {
+    background-color: #000000;
+}
+
+.header-home {
+    background: transparent;
+    position: absolute;
+    width: 100%;
+}
+
+.header-logo {
+    background-color: #ffe600;
+    padding-top: 2em;
+}
+
+.header-content {
+    display: flex;
+    grid-column: 2 / -2;
+}
+
+.nav {
+    position: fixed;
+    background: #000000;
+    width: 100%;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 100%;
+    transform: translateX(0);
+    transition: transform 250ms;
+}
+
+.navigation-open {
+    transform: translateX(-100%);
+}
+
+.nav-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.nav-link {
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 3rem;
+    font-weight: 700;
+    line-height: 18px;
+}
+
+.nav-link:hover,
+.nav-link:focus {
+    color: #ffe600;
+}
+
+.open-nav {
+    background: #000000;
+    border: 0;
+    color: white;
+    cursor: pointer;
+    padding: .5em;
+    margin-left: auto; /*pushes something all the way to the right*/
+    font-size: 1.5em;
+}
+
+.close-nav {
+    border: 0;
+    background: 0;
+    color: #ffe600;
+    font-weight: 700;
+    font-size: 3rem;
+    cursor: pointer;
+    padding: .5em;
+    position: absolute;
+}
+
+.current {
+    border-bottom: 1px solid #ffe600;
+}
+
+@media (min-width: 600px) {
+    .open-nav,
+    .close-nav {
+        display: none;
+    }
+
+    .nav {
+        position: initial;
+    }
+
+    .nav-list {
+        flex-direction: row;
+        justify-content: flex-start;
+    }
+
+    .nav-item {
+        margin-left: 2em;
+    }
+
+    .nav-link {
+        font-size: 1rem;
+    }
+
+    .header-home .nav {
+        background: transparent;
+    }
+}
+
+
+/*==============
+   Hero Area
+===============*/
+
+.hero {
+    background-image: url("./images/hero-bg.jpg");
+    padding: 8em 0 4em;
+    background-size: cover;
+    background-position: bottom;
+    color: #ffffff;
+}
+
+.hero > * {
+    grid-column: 2 / -2;
+}
+
+@media (min-width: 400px) {
+    .hero > * {
+        margin-right: 20%;
+    }
+}
+
+@media (min-width: 600px) {
+    
+    .hero {
+        padding: 10em 0 6em;
+    }
+    
+    .hero > * {
+        grid-column: 2 / span 2;
+    }
+        
+}
+
+/*==============
+   Main Content
+===============*/
+
+.main-content {
+    padding: 4em 0;
+    text-align: center;
+}
+
+.card {
+    grid-column: 2 / -2;
+}
+
+.section-title {
+    margin-bottom: .5em;
+}
+
+.section-title-center::after {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.section-title::after {
+    content: "";
+    display: block;
+    width: 60px;
+    height: 3px;
+    background: #ffe600;
+    margin-top: 10px;
+}
+
+@media (min-width: 600px) {
+    .card {
+        grid-column: span 1;
+    }
+
+    .card:first-child {
+        grid-column: 2 / span 1;
+    }
+}
+
+/*================
+   Template Page
+=================*/
+
+.main-template {
+    padding: 4em 0;
+}
+
+.main-template > * {
+    grid-column: 2 / -2;
+}
+
+.main-image {
+    margin-bottom: 1.5em;
+    box-shadow: 5px 5px 0px black, 10px 10px 0px #ffe600;
+}
+
+@media (min-width: 600px) {
+    .main-image,
+    .secondary-text {
+        grid-column: 2;
+    }
+    .main-text {
+        grid-column: 3 / span 2;
+        grid-row: span 2;
+    }
+
+    .secondary-text {
+        order: 2;
+    }
+}
+
+
+/*==============
+   Footer Area
+===============*/
+
+.footer {
+    background-color: #ebebeb;
+    padding: 4em 0;
+    text-align: center;
+    grid-template-areas: 
+        ". icons ."
+        ". main .";
+}
+
+.footer-main,
+.icon-list {
+    grid-column: 2 / -2;
+}
+
+.footer-logo,
+.footer-text,
+.footer-copyright {
+    opacity: .3;
+}
+
+.footer-main {
+    grid-area: main;
+}
+
+.icon-list {
+    grid-area: icons;
+    padding: 0;
+    margin: 0 0 2em;
+    display: flex;
+    justify-content: center;
+}
+
+
+.social-link {
+    color: #000000;
+    font-size: 1.75rem;
+    margin: 0 .5em;
+}
+
+.social-link:hover {
+    opacity: 0.37;
+}
+
+@media (min-width: 600px) {
+    .footer {
+        grid-template-areas: 
+            ". main main icons .";   
+    }
+
+    .footer-main {
+        text-align: left;
+    }
+
+    .icon-list {
+       justify-content: flex-end;
+    }
+
+}
+
+/*========
+    Form
+==========*/
+
+.contact-form {
+    display: grid;
+}
+
+label {
+    font-weight: 700;
+}
+
+input,
+textarea {
+    margin-bottom: .75em;
+    padding: .4em;
+    font-family: inherit;
+}
+
+textarea {
+    resize: none; /*Disables textarea from resizing*/
+    height: 100px;
+}
+
+@media (min-width: 600px) {
+    .contact-form {
+        grid-template-columns: repeat(2, 1fr);
+        grid-auto-flow: dense;
+        grid-column-gap: 1em;
+    }
+
+    .first-name-label,
+    .first-name-input {
+        grid-column: 1;
+    }
+
+    .email-label,
+    .email-input {
+        grid-column: 2;
+    }
+
+    .message-label,
+    .message-textarea {
+        grid-column: span 2;
+    }
+
+    .btn-form {
+        grid-column: 2;
+    }
+}
+
