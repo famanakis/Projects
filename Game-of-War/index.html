@@ -14,19 +14,21 @@
   <meta property="og:url" content="">
   <meta property="og:description" content="A simple game of war showing API calls">
   <meta property="og:image" content="">
-
-  <link rel="icon" href="/favicon.ico">
-  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
-  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
-
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
 
 </head>
 
 <body>
-    <button type="button" id="click" onclick="clickMe()">click me</button>
-  
-
+  <section class="game-container">
+    <button type="button" id="new-deck" class="btn btn-new-deck">New Deck</button>
+    <div id="card-container" class="card-container">
+      <!-- render cards from index.js -->
+    </div>
+    <button type="button" id="draw-cards" class="btn btn-draw">Draw</button>
+  </section>
   <script src="index.js" type="module"></script>
 </body>
 </html>

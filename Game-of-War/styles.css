@@ -1,0 +1,72 @@
+:root {
+    --blue: #3f7288;
+    --lt-blue: #cbd7e8;
+    --blue-green: #287a7a;
+    --dk-blue: #28373f;
+    --slate: #dde7f3;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    background: #536878;
+    margin: 0 auto;
+    padding: 1em;
+}
+
+.game-container {
+    background: #536878 url('./assets/background.jpg') no-repeat;
+    background-size: cover;
+    border-radius: 4px;
+    margin: 0 auto;
+}
+
+.btn {
+    padding: .5em 1em;
+    font-family: 'Fredoka One', cursive;
+    font-size: 1.25rem;
+    letter-spacing: .25em;
+    text-transform: uppercase;
+    border: none;
+    background-color: var(--blue-green);
+    color: var(--slate);
+    text-shadow: 0 0 2px #000000;
+}
+
+.btn:hover,
+.btn:focus {
+    background: var(--lt-blue);
+    color: var(--dk-blue);
+    text-shadow: 0 0 2px #ffffff;
+}
+
+.btn-draw {
+    width: 100%;
+}
+
+.card-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 500px;
+    padding: 1em;
+}
+
+.card {
+    width: 150px;
+    height: 300px;
+}
+
+@media (min-width: 750px) {
+    .card-container {
+        flex-direction: row;
+        gap: 2em;
+    }
+    .card {
+        width: 250px;
+        height: 400px;
+    }
+}

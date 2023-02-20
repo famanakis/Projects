@@ -1,7 +1,37 @@
+//Access the DOM
+const btnNewDeck = document.getElementById('new-deck')
+const btnDraw = document.getElementById('draw-cards')
+const cardContainer = document.getElementById('card-container')
 
 
-function clickMe() {
-    console.log('i have been clicked')
+//Variables
+let deckId
+
+//Functions
+function getNewDeck() {
+    fetch('https://www.deckofcardsapi.com/api/deck/new/shuffle/?deck_count=1')
+    .then (res => res.json())
+    .then (data => {
+        deckId = data.deck_id
+        console.log(deckId)
+    })
 }
 
-clickMe()
+function drawCards() {
+    fetch(`https://www.deckofcardsapi.com/api/deck/${deckId}/draw/?count=2`)
+    .then (res => res.json())
+    .then( data => {
+        console.log(data.cards)
+        const cards = data.cards.map(card => 
+            `<img class="card" src="${card.image}"></img>`
+            )
+        console.log(cards)
+        cardContainer.innerHTML= cards
+    })
+}
+
+
+
+//Event Listeners
+btnNewDeck.addEventListener('click', getNewDeck)
+btnDraw.addEventListener('click', drawCards)
