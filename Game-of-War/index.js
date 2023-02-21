@@ -2,6 +2,7 @@
 const btnNewDeck = document.getElementById('new-deck')
 const btnDraw = document.getElementById('draw-cards')
 const drawText = document.getElementById('draw-cards-text')
+drawText.style.display = 'none'
 const cardContainer = document.getElementById('card-container')
 const winnerEl = document.getElementById('winner-el')
 const playerEl = document.getElementById('player-el')
@@ -15,11 +16,13 @@ let computerCount = 0
 let draws = 0
 
 //Functions
+
 async function getNewDeck() {
     const res = await fetch('https://www.deckofcardsapi.com/api/deck/new/shuffle/?deck_count=1')
     const data = await res.json()
     deckId = data.deck_id
     btnDraw.disabled = false
+    drawText.style.display = 'block'
     drawText.textContent = "Draw Cards"
     roundsEl.innerHTML = ''
     btnNewDeck.style.display = 'none'
