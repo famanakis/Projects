@@ -25,12 +25,17 @@ function drawCards() {
         const cards = data.cards.map(card => 
             `<img class="card" src="${card.image}"></img>`
             )
-        console.log(cards)
         cardContainer.innerHTML= cards
+        const cardOneValue = data.cards[0].value
+        const cardTwoValue = data.cards[1].value
+        console.log(cardOneValue)
+        console.log(cardTwoValue)
     })
 }
 
-
+function roundWinner() {
+    
+}
 
 //Event Listeners
 btnNewDeck.addEventListener('click', getNewDeck)
