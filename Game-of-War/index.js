@@ -14,32 +14,28 @@ let computerCount = 0
 let draws = 0
 
 //Functions
-function getNewDeck() {
-    fetch('https://www.deckofcardsapi.com/api/deck/new/shuffle/?deck_count=1')
-    .then (res => res.json())
-    .then (data => {
-        deckId = data.deck_id
-        btnDraw.disabled = false
-        cardContainer.innerHTML = `<h2>Draw Cards</h2>`
-        roundsEl.innerHTML = ''
-    })
+async function getNewDeck() {
+    const res = await fetch('https://www.deckofcardsapi.com/api/deck/new/shuffle/?deck_count=1')
+    const data = await res.json()
+    deckId = data.deck_id
+    btnDraw.disabled = false
+    cardContainer.innerHTML = `<h2>Draw Cards</h2>`
+    roundsEl.innerHTML = ''
 }
 
-function drawCards() {
-    fetch(`https://www.deckofcardsapi.com/api/deck/${deckId}/draw/?count=2`)
-    .then (res => res.json())
-    .then( data => {
-        const cards = data.cards.map(card => 
-            `<img class="card" src="${card.image}"></img>`
-            ).join('')
-        cardContainer.innerHTML= cards
-        const cardOneValue = data.cards[0].value
-        const cardTwoValue = data.cards[1].value
-        roundWinner(cardOneValue, cardTwoValue)
-        draws ++
-        roundsEl.innerHTML = `<p>Draw: ${draws}/26</p>`
-        if(data.remaining === 0) {endGame(playerCount, computerCount)}
-    })
+async function drawCards() {
+    const res = await fetch(`https://www.deckofcardsapi.com/api/deck/${deckId}/draw/?count=2`)
+    const data = await res.json()
+    const cards = data.cards.map(card => 
+        `<img class="card" src="${card.image}"></img>`
+        ).join('')
+    cardContainer.innerHTML= cards
+    const cardOneValue = data.cards[0].value
+    const cardTwoValue = data.cards[1].value
+    roundWinner(cardOneValue, cardTwoValue)
+    draws ++
+    roundsEl.innerHTML = `<p>Draw: ${draws}/26</p>`
+    if(data.remaining === 0) {endGame(playerCount, computerCount)}
 }
 
 function endGame(player, computer) {
