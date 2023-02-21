@@ -2,6 +2,9 @@
 const btnNewDeck = document.getElementById('new-deck')
 const btnDraw = document.getElementById('draw-cards')
 const cardContainer = document.getElementById('card-container')
+const winnerEl = document.getElementById('winner-el')
+const playerEl = document.getElementById('player-el')
+const computerEl = document.getElementById('computer-el')
 
 
 //Variables
@@ -34,7 +37,7 @@ function drawCards() {
 }
 
 function roundWinner() {
-    
+
 }
 
 //Event Listeners
