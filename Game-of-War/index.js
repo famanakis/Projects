@@ -1,6 +1,7 @@
 //Access the DOM
 const btnNewDeck = document.getElementById('new-deck')
 const btnDraw = document.getElementById('draw-cards')
+const drawText = document.getElementById('draw-cards-text')
 const cardContainer = document.getElementById('card-container')
 const winnerEl = document.getElementById('winner-el')
 const playerEl = document.getElementById('player-el')
@@ -19,8 +20,9 @@ async function getNewDeck() {
     const data = await res.json()
     deckId = data.deck_id
     btnDraw.disabled = false
-    cardContainer.innerHTML = `<h2>Draw Cards</h2>`
+    drawText.textContent = "Draw Cards"
     roundsEl.innerHTML = ''
+    btnNewDeck.style.display = 'none'
 }
 
 async function drawCards() {
@@ -38,28 +40,6 @@ async function drawCards() {
     if(data.remaining === 0) {endGame(playerCount, computerCount)}
 }
 
-function endGame(player, computer) {
-    player > computer ? winnerEl.innerHTML = `<h1>Player wins!</h1>` :
-    computer > player ? winnerEl.innerHTML = `<h1>Computer wins!</h1>` :
-    winnerEl.innerHTML = `<h1>Tie!<h1>`
-    roundsEl.innerHTML = ''
-    cardContainer.innerHTML = ''
-    btnDraw.disabled = true
-    const fireworks = new Fireworks.default(cardContainer)
-    fireworks.start()
-    setTimeout(newGame, 12000)   
-}
-
-function newGame() {
-    playerCount = 0
-    computerCount = 0
-    winnerEl.innerHTML = `<h1>Game of War</h1>`
-    cardContainer.innerHTML = `<button type="button" id="new-deck" class="btn btn-new-deck">Draw a New Deck</button>`
-    playerEl.textContent = "Player: " + playerCount
-    computerEl.textContent = "Computer: " + computerCount
-    btnNewDeck.style.display = 'visible'
-}
-
 function roundWinner(player, computer) {
     const cardArr = ["2", "3", "4", "5", "6", "7", "8", "9", "10", "JACK", "QUEEN", "KING", "ACE"]
     const playerValue = cardArr.indexOf(player)
@@ -71,7 +51,29 @@ function roundWinner(player, computer) {
         computerCount ++
     } 
     playerEl.textContent = "Player: " + playerCount
-    computerEl.textContent = "Computer " + computerCount
+    computerEl.textContent = "Computer: " + computerCount
+}
+
+function endGame(player, computer) {
+    player > computer ? winnerEl.innerHTML = `<h1>Player wins!</h1>` :
+    computer > player ? winnerEl.innerHTML = `<h1>Computer wins!</h1>` :
+    winnerEl.innerHTML = `<h1>Tie!<h1>`
+    roundsEl.innerHTML = ''
+    cardContainer.innerHTML = ''
+    btnDraw.disabled = true
+    const fireworks = new Fireworks.default(cardContainer)
+    fireworks.start()
+    setTimeout(newGame, 7000)   
+}
+
+function newGame() {
+    playerCount = 0
+    computerCount = 0
+    winnerEl.innerHTML = `<h1>Game of War</h1>`
+    cardContainer.innerHTML = `<button type="button" id="new-deck" class="btn btn-new-deck">Draw a New Deck</button>`
+    playerEl.textContent = "Player: " + playerCount
+    computerEl.textContent = "Computer: " + computerCount
+    btnNewDeck.style.display = 'block'
 }
 
 //Event Listeners
