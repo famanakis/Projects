@@ -19,6 +19,7 @@ async function getNewDeck() {
     const data = await res.json()
     deckId = data.deck_id
     btnDraw.disabled = false
+    btnDraw.style.opacity = '1'
     btnNewDeck.style.opacity = '0'
     cardContainer.innerHTML = `<h2 id="draw-text" class="draw-text">Draw Cards</h2>`
     roundsEl.innerHTML = ''
@@ -68,6 +69,7 @@ function endGame(player, computer) {
     computerEl.style.textDecoration = 'none'
     roundsEl.innerHTML = ''
     cardContainer.innerHTML = ''
+    btnDraw.style.opacity = '0'
     const fireworks = new Fireworks.default(cardContainer)
     fireworks.start()
     setTimeout(newGame, 7000)   
