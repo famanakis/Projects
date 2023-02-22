@@ -65,6 +65,9 @@ h1 {
 }
 
 .btn-new-deck {
+    position: absolute;
+    top: 40%;
+    right: 18%;
     color: var(--white);
     background-color: transparent;
     transition: all .5s ease-in-out; 
