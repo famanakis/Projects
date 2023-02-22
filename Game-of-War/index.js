@@ -14,14 +14,13 @@ let computerCount = 0
 let draws = 0
 
 //Functions
-
 async function getNewDeck() {
     const res = await fetch('https://www.deckofcardsapi.com/api/deck/new/shuffle/?deck_count=1')
     const data = await res.json()
     deckId = data.deck_id
     btnDraw.disabled = false
-    btnNewDeck.style.display = 'none'
-    cardContainer.innerHTML = `<h2>Draw Cards</h2>`
+    btnNewDeck.style.opacity = '0'
+    cardContainer.innerHTML = `<h2 id="draw-text" class="draw-text">Draw Cards</h2>`
     roundsEl.innerHTML = ''
 }
 
@@ -37,7 +36,10 @@ async function drawCards() {
     roundWinner(cardOneValue, cardTwoValue)
     draws ++
     roundsEl.innerHTML = `<p>Draw: ${draws}/26</p>`
-    if(data.remaining === 0) {endGame(playerCount, computerCount)}
+    if (data.remaining === 0) {
+        btnDraw.disabled = true
+        setTimeout(() => endGame(playerCount, computerCount), 1000)
+      }     
 }
 
 function roundWinner(player, computer) {
@@ -45,10 +47,16 @@ function roundWinner(player, computer) {
     const playerValue = cardArr.indexOf(player)
     const computerValue = cardArr.indexOf(computer)
     if( playerValue === computerValue) {
+        playerEl.style.textDecoration = 'none'
+        computerEl.style.textDecoration = 'none'
     } else if(playerValue > computerValue) {
         playerCount ++
+        playerEl.style.textDecoration = 'underline'
+        computerEl.style.textDecoration = 'none'
     } else {
         computerCount ++
+        playerEl.style.textDecoration = 'none'
+        computerEl.style.textDecoration = 'underline'
     } 
     playerEl.textContent = "Player: " + playerCount
     computerEl.textContent = "Computer: " + computerCount
@@ -58,9 +66,10 @@ function endGame(player, computer) {
     player > computer ? winnerEl.innerHTML = `<h1>Player wins!</h1>` :
     computer > player ? winnerEl.innerHTML = `<h1>Computer wins!</h1>` :
     winnerEl.innerHTML = `<h1>Tie!<h1>`
+    playerEl.style.textDecoration = 'none'
+    computerEl.style.textDecoration = 'none'
     roundsEl.innerHTML = ''
     cardContainer.innerHTML = ''
-    btnDraw.disabled = true
     const fireworks = new Fireworks.default(cardContainer)
     fireworks.start()
     setTimeout(newGame, 7000)   
@@ -74,7 +83,7 @@ function newGame() {
     playerEl.textContent = "Player: " + playerCount
     computerEl.textContent = "Computer: " + computerCount
     cardContainer.innerHTML = ''
-    btnNewDeck.style.display = 'block'
+    btnNewDeck.style.opacity = '1'
 }
 
 //Event Listeners
