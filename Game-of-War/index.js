@@ -27,9 +27,7 @@ async function getNewDeck() {
 async function drawCards() {
     const res = await fetch(`https://www.deckofcardsapi.com/api/deck/${deckId}/draw/?count=2`)
     const data = await res.json()
-    const cards = data.cards.map(card => 
-        `<img class="card" src="${card.image}"></img>`
-        ).join('')
+    const cards = data.cards.map(card => `<img class="card" src="${card.image}"></img>`).join('')
     cardContainer.innerHTML = cards
     const cardOneValue = data.cards[0].value
     const cardTwoValue = data.cards[1].value
@@ -38,7 +36,7 @@ async function drawCards() {
     roundsEl.innerHTML = `<p>Draw: ${draws}/26</p>`
     if (data.remaining === 0) {
         btnDraw.disabled = true
-        setTimeout(() => endGame(playerCount, computerCount), 1000)
+        setTimeout(() => endGame(playerCount, computerCount), 1500)
       }     
 }
 
@@ -49,7 +47,7 @@ function roundWinner(player, computer) {
     if( playerValue === computerValue) {
         playerEl.style.textDecoration = 'none'
         computerEl.style.textDecoration = 'none'
-    } else if(playerValue > computerValue) {
+    } else if (playerValue > computerValue) {
         playerCount ++
         playerEl.style.textDecoration = 'underline'
         computerEl.style.textDecoration = 'none'

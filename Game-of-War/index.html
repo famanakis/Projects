@@ -1,41 +1,35 @@
 <!doctype html>
-
 <html lang="en">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-
-  <title>Game of War</title>
-  <meta name="description" content="A simple game of war showing API calls">
-  <meta name="author" content="SitePoint">
-
-  <meta property="og:title" content="Game of War">
-  <meta property="og:type" content="website">
-  <meta property="og:url" content="">
-  <meta property="og:description" content="A simple game of war showing API calls">
-  <meta property="og:image" content="">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css">
-
-</head>
-
-<body>
-  <section class="game-container">
-    <h1 id="winner-el">Game of War</h1>
-    <p id="rounds-left-el" class="rounds-left"></p>
-    <div class="players">
-      <p id="player-el"></p>
-      <p id="computer-el"></p>
-    </div>
-    <div id="card-container" class="card-container">
-      <!-- render from index.js file -->
-    </div>
-    <button type="button" id="draw-cards" class="btn btn-draw" disabled>Draw</button>
-  </section>
-  <button type="button" id="new-deck" class="btn btn-new-deck">Draw a New Deck</button>
-  <script src="index.js" type="module"></script>
-  <script src="https://cdn.jsdelivr.net/npm/fireworks-js@2.x/dist/index.umd.js"></script>
-</body>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Game of War</title>
+    <meta name="description" content="A simple game of war showing API calls">
+    <meta name="author" content="SitePoint">
+    <meta property="og:title" content="Game of War">
+    <meta property="og:type" content="website">
+    <meta property="og:description" content="A simple game of war showing API calls">
+    <meta property="og:image" content="">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka+One&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <section class="game-container">
+      <h1 id="winner-el">Game of War</h1>
+      <p id="rounds-left-el" class="rounds-left"></p>
+      <div class="players">
+        <p id="player-el"></p>
+        <p id="computer-el"></p>
+      </div>
+      <div id="card-container" class="card-container">
+        <!-- render from index.js file -->
+      </div>
+      <button type="button" id="draw-cards" class="btn btn-draw" disabled>Draw</button>
+    </section>
+    <button type="button" id="new-deck" class="btn btn-new-deck">Draw a New Deck</button>
+    <script src="index.js" type="module"></script>
+    <script src="https://cdn.jsdelivr.net/npm/fireworks-js@2.x/dist/index.umd.js"></script>
+  </body>
 </html>
