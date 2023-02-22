@@ -20,7 +20,8 @@ body {
     font-family: 'Fredoka One', cursive;
     font-size: 1.25rem;
     letter-spacing: .15em;
-    text-shadow: 0 0 1px #000000;;  
+    text-shadow: 0 0 1px #000000;
+    overflow-x: hidden; 
 }
 
 h1 {
@@ -67,10 +68,13 @@ h1 {
 .btn-new-deck {
     position: absolute;
     top: 40%;
-    right: 18%;
+    left: 0;
+    right: 0;
+    margin: auto;
     color: var(--white);
     background-color: transparent;
     transition: all .5s ease-in-out; 
+    transition-delay: 250ms;
 }
 
 .btn-new-deck:hover {
@@ -98,6 +102,7 @@ h1 {
 .btn-draw:disabled {
     background: var(--dk-blue);
     color: var(--blue);
+    cursor: auto;
 }
 
 .card-container {
@@ -134,6 +139,5 @@ h1 {
     }
     .btn-new-deck {
         font-size: 2rem;
-        margin: 0 auto;
     }
 }

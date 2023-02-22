@@ -1,8 +1,6 @@
 //Access the DOM
 const btnNewDeck = document.getElementById('new-deck')
 const btnDraw = document.getElementById('draw-cards')
-const drawText = document.getElementById('draw-cards-text')
-drawText.style.display = 'none'
 const cardContainer = document.getElementById('card-container')
 const winnerEl = document.getElementById('winner-el')
 const playerEl = document.getElementById('player-el')
@@ -22,10 +20,9 @@ async function getNewDeck() {
     const data = await res.json()
     deckId = data.deck_id
     btnDraw.disabled = false
-    drawText.style.display = 'block'
-    drawText.textContent = "Draw Cards"
-    roundsEl.innerHTML = ''
     btnNewDeck.style.display = 'none'
+    cardContainer.innerHTML = `<h2>Draw Cards</h2>`
+    roundsEl.innerHTML = ''
 }
 
 async function drawCards() {
@@ -34,7 +31,7 @@ async function drawCards() {
     const cards = data.cards.map(card => 
         `<img class="card" src="${card.image}"></img>`
         ).join('')
-    cardContainer.innerHTML= cards
+    cardContainer.innerHTML = cards
     const cardOneValue = data.cards[0].value
     const cardTwoValue = data.cards[1].value
     roundWinner(cardOneValue, cardTwoValue)
@@ -72,10 +69,11 @@ function endGame(player, computer) {
 function newGame() {
     playerCount = 0
     computerCount = 0
+    draws = 0
     winnerEl.innerHTML = `<h1>Game of War</h1>`
-    cardContainer.innerHTML = `<button type="button" id="new-deck" class="btn btn-new-deck">Draw a New Deck</button>`
     playerEl.textContent = "Player: " + playerCount
     computerEl.textContent = "Computer: " + computerCount
+    cardContainer.innerHTML = ''
     btnNewDeck.style.display = 'block'
 }
 
