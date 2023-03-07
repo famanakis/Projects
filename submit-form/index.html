@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Contact One Stop Office</title>
+        <link rel="stylesheet" href="contact-form.css">
+        <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+
+    </head>
+    <body>
+        <div class="container">
+            <div class="contact-main-block">
+                <div class="contact-left-part">
+                </div>
+                <form id="contact-form" class="contact-form" action="https://fabform.io/f/VtDsTq9" method="post">
+                    <!-- Honeypot -->
+                    <input type="text" name="_honey" style="display: none">
+                    <h1 class="contact-h1">Contact Us</h1>
+                    <div class="info">
+                        <input type="hidden" name="contact_number">
+                        <input class="fname contact-input" type="text" name="name" placeholder="First name" required>
+                        <input class="contact-input" type="text" name="lastName" placeholder="Last name" required>
+                        <input class="contact-input" type="text" name="email" placeholder="Email" required>
+                        <input class="contact-input" type="text" name="phone" placeholder="Phone number">
+                    </div>
+                    <p class="contact-message">Message</p>
+                    <div>
+                        <textarea class="contact-textarea" rows="4" name="message" aria-label="write your questions here" required></textarea>
+                    </div>
+                    <button class="contact-btn-submit" type="submit">Submit</button>
+                </form>
+            </div>
+        </div>
+    </body>
+    <script type="text/javascript" src="./contact-form.js"></script>
+</html>
